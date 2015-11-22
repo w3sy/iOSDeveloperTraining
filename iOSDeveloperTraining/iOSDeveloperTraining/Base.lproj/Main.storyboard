@@ -18,17 +18,18 @@
                     </tabBar>
                     <connections>
                         <segue destination="FjP-sV-yAh" kind="relationship" relationship="viewControllers" id="rkP-yq-yrR"/>
+                        <segue destination="TDH-Nb-8wn" kind="relationship" relationship="viewControllers" id="apk-bM-FPi"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FyC-PW-DSM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-421" y="-5"/>
         </scene>
-        <!--课程-->
+        <!--资讯-->
         <scene sceneID="wdm-0r-hyW">
             <objects>
                 <navigationController id="FjP-sV-yAh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="课程" image="Book" id="4nX-o7-ihI"/>
+                    <tabBarItem key="tabBarItem" title="资讯" image="News" id="4nX-o7-ihI"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="Mv8-44-7dw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -62,9 +63,48 @@
             </objects>
             <point key="canvasLocation" x="1021" y="-5"/>
         </scene>
+        <!--课程-->
+        <scene sceneID="bJ7-h1-esu">
+            <objects>
+                <navigationController id="TDH-Nb-8wn" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="课程" image="Book" id="KWO-ic-wXW"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="hb7-ka-L4t">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="urb-9M-bF7" kind="relationship" relationship="rootViewController" id="ZH9-bM-N9C"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hGh-kG-k4A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="297" y="833"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="oml-os-DP5">
+            <objects>
+                <viewController id="urb-9M-bF7" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gPh-1R-iSF"/>
+                        <viewControllerLayoutGuide type="bottom" id="Baw-x5-wxP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bgT-tH-0j8">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="bpY-P7-Zxb"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0GK-XU-qdj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1021" y="833"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Book" width="30" height="30"/>
+        <image name="News" width="30" height="30"/>
     </resources>
     <color key="tintColor" red="1" green="0.59999999999999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>
