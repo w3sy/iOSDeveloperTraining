@@ -56,7 +56,6 @@
 		2D1837A81C019533007627F0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				2D6313B01C017E4B0049942E /* Main.storyboard */,
 				2D6313BE1C017FDD0049942E /* LaunchScreen.xib */,
 				2D1837A91C0195C8007627F0 /* CustomTabbar.h */,
 				2D1837AA1C0195C8007627F0 /* CustomTabbar.m */,
@@ -88,6 +87,7 @@
 				2D1837A81C019533007627F0 /* Views */,
 				2D6313AA1C017E4B0049942E /* AppDelegate.h */,
 				2D6313AB1C017E4B0049942E /* AppDelegate.m */,
+				2D6313B01C017E4B0049942E /* Main.storyboard */,
 				2D6313B31C017E4B0049942E /* Assets.xcassets */,
 				2D6313A71C017E4B0049942E /* Supporting Files */,
 			);
