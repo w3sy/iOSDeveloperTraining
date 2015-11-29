@@ -94,6 +94,10 @@ static BOOL webViewKVO;
                     self.loadProgressView.hidden = YES;
                     self.loadProgressView.alpha = 1;
                 }];
+                NSString * baseUrlStr = self.webView.URL.absoluteString;
+                baseUrlStr = [[baseUrlStr componentsSeparatedByString:@"://"] lastObject];
+                baseUrlStr = [[baseUrlStr componentsSeparatedByString:@"/"] firstObject];
+                self.webOriginLabel.text = [NSString stringWithFormat:@"本页由%@提供", baseUrlStr];
             }
         } else if ([keyPath isEqualToString:@"canGoBack"]) {
             self.backBarButtonItem.enabled = self.webView.canGoBack;
