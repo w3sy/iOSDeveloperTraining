@@ -85,9 +85,11 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-iOSDeveloperTraining/AFNetworking.framework"
+  install_framework "Pods-iOSDeveloperTraining/CBStoreHouseRefreshControl.framework"
   install_framework "Pods-iOSDeveloperTraining/ZSSRichTextEditor.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-iOSDeveloperTraining/AFNetworking.framework"
+  install_framework "Pods-iOSDeveloperTraining/CBStoreHouseRefreshControl.framework"
   install_framework "Pods-iOSDeveloperTraining/ZSSRichTextEditor.framework"
 fi

@@ -11,6 +11,7 @@
 		2D5E8EB21C082C1600BD6E82 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5E8EB11C082C1600BD6E82 /* TestViewController.m */; };
 		2D5E8EB51C082DCC00BD6E82 /* InsideWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5E8EB41C082DCC00BD6E82 /* InsideWebViewController.m */; };
 		2D5E8EB71C09C93000BD6E82 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D5E8EB61C09C93000BD6E82 /* WebKit.framework */; };
+		2D5E8EBB1C0AED1900BD6E82 /* NetworkTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5E8EBA1C0AED1900BD6E82 /* NetworkTools.m */; };
 		2D6313A91C017E4B0049942E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D6313A81C017E4B0049942E /* main.m */; };
 		2D6313AC1C017E4B0049942E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D6313AB1C017E4B0049942E /* AppDelegate.m */; };
 		2D6313B21C017E4B0049942E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D6313B01C017E4B0049942E /* Main.storyboard */; };
@@ -28,6 +29,8 @@
 		2D5E8EB31C082DCC00BD6E82 /* InsideWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsideWebViewController.h; sourceTree = "<group>"; };
 		2D5E8EB41C082DCC00BD6E82 /* InsideWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsideWebViewController.m; sourceTree = "<group>"; };
 		2D5E8EB61C09C93000BD6E82 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		2D5E8EB91C0AED1900BD6E82 /* NetworkTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkTools.h; sourceTree = "<group>"; };
+		2D5E8EBA1C0AED1900BD6E82 /* NetworkTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkTools.m; sourceTree = "<group>"; };
 		2D6313A41C017E4B0049942E /* iOSDeveloperTraining.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSDeveloperTraining.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D6313A81C017E4B0049942E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2D6313AA1C017E4B0049942E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -83,6 +86,15 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
+		2D5E8EB81C0AECC800BD6E82 /* ToolKits */ = {
+			isa = PBXGroup;
+			children = (
+				2D5E8EB91C0AED1900BD6E82 /* NetworkTools.h */,
+				2D5E8EBA1C0AED1900BD6E82 /* NetworkTools.m */,
+			);
+			name = ToolKits;
+			sourceTree = "<group>";
+		};
 		2D63139B1C017E4B0049942E = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +116,7 @@
 		2D6313A61C017E4B0049942E /* iOSDeveloperTraining */ = {
 			isa = PBXGroup;
 			children = (
+				2D5E8EB81C0AECC800BD6E82 /* ToolKits */,
 				2D5E8EAF1C082BE100BD6E82 /* Controllers */,
 				2D1837A81C019533007627F0 /* Views */,
 				2D6313AA1C017E4B0049942E /* AppDelegate.h */,
@@ -255,6 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D5E8EBB1C0AED1900BD6E82 /* NetworkTools.m in Sources */,
 				2D5E8EB51C082DCC00BD6E82 /* InsideWebViewController.m in Sources */,
 				2D1837AB1C0195C8007627F0 /* CustomTabbar.m in Sources */,
 				2D6313AC1C017E4B0049942E /* AppDelegate.m in Sources */,

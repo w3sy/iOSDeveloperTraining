@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "NetworkTools.h"
 
 @interface AppDelegate ()
 
@@ -18,6 +19,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
+    NSLog(@"%@", NSHomeDirectory());
+    [NetworkTools startReachabilityMonitoringWithDefaultBlock];
     
     return YES;
 }

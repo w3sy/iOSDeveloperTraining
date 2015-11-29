@@ -7,13 +7,12 @@
 //
 
 #import "InsideWebViewController.h"
+#import "NetworkTools.h"
 #import <WebKit/WebKit.h>
 
 @interface InsideWebViewController ()
-{
-    NSString * _urlStr;
-}
 
+@property (nonatomic) NSString * urlStr;
 @property (nonatomic) WKWebView * webView;
 @property (weak, nonatomic) IBOutlet UIView *webViewContainerView;
 @property (weak, nonatomic) IBOutlet UIProgressView *loadProgressView;
@@ -35,6 +34,7 @@ static BOOL webViewKVO;
 - (void)viewDidLoad {
     [super viewDidLoad];
     WKWebViewConfiguration * config = [[WKWebViewConfiguration alloc] init];
+    
     self.webView = [[WKWebView alloc] initWithFrame:self.view.bounds configuration:config];
     self.webView.backgroundColor = [UIColor clearColor];
     self.webView.scrollView.backgroundColor = [UIColor clearColor];
@@ -52,7 +52,8 @@ static BOOL webViewKVO;
     [self.webView addObserver:self forKeyPath:@"canGoBack" options:NSKeyValueObservingOptionNew context:&webViewKVO];
     [self.webView addObserver:self forKeyPath:@"canGoForward" options:NSKeyValueObservingOptionNew context:&webViewKVO];
     
-    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_urlStr]]];
+    NSMutableURLRequest * req = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:self.urlStr] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15];
+    [self.webView loadRequest:req];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -97,7 +98,9 @@ static BOOL webViewKVO;
                 NSString * baseUrlStr = self.webView.URL.absoluteString;
                 baseUrlStr = [[baseUrlStr componentsSeparatedByString:@"://"] lastObject];
                 baseUrlStr = [[baseUrlStr componentsSeparatedByString:@"/"] firstObject];
-                self.webOriginLabel.text = [NSString stringWithFormat:@"本页由%@提供", baseUrlStr];
+                if (baseUrlStr) {
+                    self.webOriginLabel.text = [NSString stringWithFormat:@"本页由 %@ 提供", baseUrlStr];
+                }
             }
         } else if ([keyPath isEqualToString:@"canGoBack"]) {
             self.backBarButtonItem.enabled = self.webView.canGoBack;
@@ -120,7 +123,7 @@ static BOOL webViewKVO;
 
 
 - (void)loadWithUrlString:(NSString *)urlStr {
-    _urlStr = urlStr;
+    self.urlStr = urlStr;
 }
 
 - (IBAction)closeAction:(UIBarButtonItem *)sender {
