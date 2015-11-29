@@ -20,11 +20,14 @@ PODS:
   - AFNetworking/UIKit (2.6.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - ZSSRichTextEditor (0.5.2.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.6)
+  - ZSSRichTextEditor
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
+  ZSSRichTextEditor: 56ed060d6d7a98fb6be9fceb8074ced22160349b
 
 COCOAPODS: 0.39.0

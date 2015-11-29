@@ -3,4 +3,5 @@ use_frameworks!
 
 target 'iOSDeveloperTraining' do
   pod 'AFNetworking', '~> 2.6'
+  pod 'ZSSRichTextEditor'
 end
