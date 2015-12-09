@@ -12,7 +12,7 @@
 
 - (void)awakeFromNib {
     // 设置标签栏图标选中颜色
-    self.tintColor = [UIColor colorWithRed:1.0 green:153/255.0 blue:0 alpha:1];
+    self.tintColor = [UIColor colorWithRed:0 green:128/255.0 blue:0 alpha:1];
     
 }
 

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2D1837AB1C0195C8007627F0 /* CustomTabbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1837AA1C0195C8007627F0 /* CustomTabbar.m */; };
+		2D55258B1C186C0D00BF186F /* RSSItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5525881C186C0D00BF186F /* RSSItem.m */; };
+		2D55258C1C186C0D00BF186F /* RSSParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D55258A1C186C0D00BF186F /* RSSParser.m */; };
+		2D55258F1C186C8100BF186F /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D55258E1C186C8100BF186F /* NewsViewController.m */; };
 		2D5E8EB21C082C1600BD6E82 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5E8EB11C082C1600BD6E82 /* TestViewController.m */; };
 		2D5E8EB51C082DCC00BD6E82 /* InsideWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5E8EB41C082DCC00BD6E82 /* InsideWebViewController.m */; };
 		2D5E8EB71C09C93000BD6E82 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D5E8EB61C09C93000BD6E82 /* WebKit.framework */; };
@@ -17,6 +20,8 @@
 		2D6313B21C017E4B0049942E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D6313B01C017E4B0049942E /* Main.storyboard */; };
 		2D6313B41C017E4B0049942E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D6313B31C017E4B0049942E /* Assets.xcassets */; };
 		2D6313BF1C017FDD0049942E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D6313BE1C017FDD0049942E /* LaunchScreen.xib */; };
+		2DB466031C0C1E9000E2CCAF /* loading.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DB466021C0C1E9000E2CCAF /* loading.plist */; };
+		2DB466061C0C214200E2CCAF /* RefreshControlTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB466051C0C214200E2CCAF /* RefreshControlTool.m */; };
 		486733C3A624421538E4AB34 /* Pods_iOSDeveloperTraining.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38326F6F2CE0F8D035A484CB /* Pods_iOSDeveloperTraining.framework */; };
 /* End PBXBuildFile section */
 
@@ -24,6 +29,12 @@
 		1B15A283958628343F19A0C2 /* Pods-iOSDeveloperTraining.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSDeveloperTraining.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iOSDeveloperTraining/Pods-iOSDeveloperTraining.debug.xcconfig"; sourceTree = "<group>"; };
 		2D1837A91C0195C8007627F0 /* CustomTabbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTabbar.h; sourceTree = "<group>"; };
 		2D1837AA1C0195C8007627F0 /* CustomTabbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTabbar.m; sourceTree = "<group>"; };
+		2D5525871C186C0D00BF186F /* RSSItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSItem.h; sourceTree = "<group>"; };
+		2D5525881C186C0D00BF186F /* RSSItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSItem.m; sourceTree = "<group>"; };
+		2D5525891C186C0D00BF186F /* RSSParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSParser.h; sourceTree = "<group>"; };
+		2D55258A1C186C0D00BF186F /* RSSParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSParser.m; sourceTree = "<group>"; };
+		2D55258D1C186C8100BF186F /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
+		2D55258E1C186C8100BF186F /* NewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
 		2D5E8EB01C082C1600BD6E82 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		2D5E8EB11C082C1600BD6E82 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		2D5E8EB31C082DCC00BD6E82 /* InsideWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsideWebViewController.h; sourceTree = "<group>"; };
@@ -39,6 +50,9 @@
 		2D6313B31C017E4B0049942E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2D6313B81C017E4B0049942E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D6313BE1C017FDD0049942E /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		2DB466021C0C1E9000E2CCAF /* loading.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = loading.plist; sourceTree = "<group>"; };
+		2DB466041C0C214200E2CCAF /* RefreshControlTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshControlTool.h; sourceTree = "<group>"; };
+		2DB466051C0C214200E2CCAF /* RefreshControlTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshControlTool.m; sourceTree = "<group>"; };
 		38326F6F2CE0F8D035A484CB /* Pods_iOSDeveloperTraining.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSDeveloperTraining.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		64A79219F20F7182401FB014 /* Pods-iOSDeveloperTraining.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSDeveloperTraining.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOSDeveloperTraining/Pods-iOSDeveloperTraining.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -75,6 +89,17 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		2D5525861C186C0D00BF186F /* RSSParser */ = {
+			isa = PBXGroup;
+			children = (
+				2D5525871C186C0D00BF186F /* RSSItem.h */,
+				2D5525881C186C0D00BF186F /* RSSItem.m */,
+				2D5525891C186C0D00BF186F /* RSSParser.h */,
+				2D55258A1C186C0D00BF186F /* RSSParser.m */,
+			);
+			path = RSSParser;
+			sourceTree = "<group>";
+		};
 		2D5E8EAF1C082BE100BD6E82 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -82,6 +107,8 @@
 				2D5E8EB11C082C1600BD6E82 /* TestViewController.m */,
 				2D5E8EB31C082DCC00BD6E82 /* InsideWebViewController.h */,
 				2D5E8EB41C082DCC00BD6E82 /* InsideWebViewController.m */,
+				2D55258D1C186C8100BF186F /* NewsViewController.h */,
+				2D55258E1C186C8100BF186F /* NewsViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -89,8 +116,11 @@
 		2D5E8EB81C0AECC800BD6E82 /* ToolKits */ = {
 			isa = PBXGroup;
 			children = (
+				2D5525861C186C0D00BF186F /* RSSParser */,
 				2D5E8EB91C0AED1900BD6E82 /* NetworkTools.h */,
 				2D5E8EBA1C0AED1900BD6E82 /* NetworkTools.m */,
+				2DB466041C0C214200E2CCAF /* RefreshControlTool.h */,
+				2DB466051C0C214200E2CCAF /* RefreshControlTool.m */,
 			);
 			name = ToolKits;
 			sourceTree = "<group>";
@@ -131,6 +161,7 @@
 		2D6313A71C017E4B0049942E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2DB466021C0C1E9000E2CCAF /* loading.plist */,
 				2D6313B81C017E4B0049942E /* Info.plist */,
 				2D6313A81C017E4B0049942E /* main.m */,
 			);
@@ -207,6 +238,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DB466031C0C1E9000E2CCAF /* loading.plist in Resources */,
 				2D6313B41C017E4B0049942E /* Assets.xcassets in Resources */,
 				2D6313BF1C017FDD0049942E /* LaunchScreen.xib in Resources */,
 				2D6313B21C017E4B0049942E /* Main.storyboard in Resources */,
@@ -271,9 +303,13 @@
 				2D5E8EBB1C0AED1900BD6E82 /* NetworkTools.m in Sources */,
 				2D5E8EB51C082DCC00BD6E82 /* InsideWebViewController.m in Sources */,
 				2D1837AB1C0195C8007627F0 /* CustomTabbar.m in Sources */,
+				2D55258B1C186C0D00BF186F /* RSSItem.m in Sources */,
 				2D6313AC1C017E4B0049942E /* AppDelegate.m in Sources */,
 				2D5E8EB21C082C1600BD6E82 /* TestViewController.m in Sources */,
 				2D6313A91C017E4B0049942E /* main.m in Sources */,
+				2D55258F1C186C8100BF186F /* NewsViewController.m in Sources */,
+				2D55258C1C186C0D00BF186F /* RSSParser.m in Sources */,
+				2DB466061C0C214200E2CCAF /* RefreshControlTool.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
