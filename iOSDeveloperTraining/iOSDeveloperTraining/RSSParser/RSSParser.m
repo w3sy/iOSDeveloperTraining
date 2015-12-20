@@ -33,7 +33,6 @@
 }
 
 #pragma mark -
-
 #pragma mark parser
 
 + (void)parseRSSFeedForRequest:(NSURLRequest *)urlRequest
@@ -61,10 +60,9 @@
         failblock = [failure copy];
         [(NSXMLParser *)responseObject setDelegate:self];
         [(NSXMLParser *)responseObject parse];
-    }
-                                     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                         failure(error);
-                                     }];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        failure(error);
+    }];
     
     [operation start];
     
@@ -109,6 +107,8 @@
             [currentItem setAuthor:tmpString];
         } else if ([elementName isEqualToString:@"guid"]) {
             [currentItem setGuid:tmpString];
+        } else if ([elementName isEqualToString:@"author"]) {
+            [currentItem setAuthor:tmpString];
         }
         
         // sometimes the URL is inside enclosure element, not in link. Reference: http://www.w3schools.com/rss/rss_tag_enclosure.asp

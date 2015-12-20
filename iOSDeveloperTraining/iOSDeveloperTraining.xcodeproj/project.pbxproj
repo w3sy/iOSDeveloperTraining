@@ -11,6 +11,12 @@
 		2D55258B1C186C0D00BF186F /* RSSItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5525881C186C0D00BF186F /* RSSItem.m */; };
 		2D55258C1C186C0D00BF186F /* RSSParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D55258A1C186C0D00BF186F /* RSSParser.m */; };
 		2D55258F1C186C8100BF186F /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D55258E1C186C8100BF186F /* NewsViewController.m */; };
+		2D594CF11C2642BF006946CC /* RssNewsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D594CF01C2642BF006946CC /* RssNewsTableViewCell.m */; };
+		2D594CF41C267749006946CC /* ResourcesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D594CF31C267749006946CC /* ResourcesViewController.m */; };
+		2D594CF71C2680BF006946CC /* ResourcesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D594CF61C2680BF006946CC /* ResourcesTableViewCell.m */; };
+		2D594CFA1C269494006946CC /* ResourceDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D594CF91C269494006946CC /* ResourceDetailViewController.m */; };
+		2D594CFD1C269C84006946CC /* CustomNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D594CFC1C269C84006946CC /* CustomNavigationController.m */; };
+		2D594D001C26C648006946CC /* SmartLoadMore.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D594CFF1C26C648006946CC /* SmartLoadMore.m */; };
 		2D5E8EB21C082C1600BD6E82 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5E8EB11C082C1600BD6E82 /* TestViewController.m */; };
 		2D5E8EB51C082DCC00BD6E82 /* InsideWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5E8EB41C082DCC00BD6E82 /* InsideWebViewController.m */; };
 		2D5E8EB71C09C93000BD6E82 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D5E8EB61C09C93000BD6E82 /* WebKit.framework */; };
@@ -35,6 +41,18 @@
 		2D55258A1C186C0D00BF186F /* RSSParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSParser.m; sourceTree = "<group>"; };
 		2D55258D1C186C8100BF186F /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
 		2D55258E1C186C8100BF186F /* NewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
+		2D594CEF1C2642BF006946CC /* RssNewsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RssNewsTableViewCell.h; sourceTree = "<group>"; };
+		2D594CF01C2642BF006946CC /* RssNewsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RssNewsTableViewCell.m; sourceTree = "<group>"; };
+		2D594CF21C267749006946CC /* ResourcesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourcesViewController.h; sourceTree = "<group>"; };
+		2D594CF31C267749006946CC /* ResourcesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourcesViewController.m; sourceTree = "<group>"; };
+		2D594CF51C2680BF006946CC /* ResourcesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourcesTableViewCell.h; sourceTree = "<group>"; };
+		2D594CF61C2680BF006946CC /* ResourcesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourcesTableViewCell.m; sourceTree = "<group>"; };
+		2D594CF81C269494006946CC /* ResourceDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceDetailViewController.h; sourceTree = "<group>"; };
+		2D594CF91C269494006946CC /* ResourceDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceDetailViewController.m; sourceTree = "<group>"; };
+		2D594CFB1C269C84006946CC /* CustomNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomNavigationController.h; sourceTree = "<group>"; };
+		2D594CFC1C269C84006946CC /* CustomNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNavigationController.m; sourceTree = "<group>"; };
+		2D594CFE1C26C648006946CC /* SmartLoadMore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartLoadMore.h; sourceTree = "<group>"; };
+		2D594CFF1C26C648006946CC /* SmartLoadMore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartLoadMore.m; sourceTree = "<group>"; };
 		2D5E8EB01C082C1600BD6E82 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		2D5E8EB11C082C1600BD6E82 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		2D5E8EB31C082DCC00BD6E82 /* InsideWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsideWebViewController.h; sourceTree = "<group>"; };
@@ -85,6 +103,10 @@
 				2D6313BE1C017FDD0049942E /* LaunchScreen.xib */,
 				2D1837A91C0195C8007627F0 /* CustomTabbar.h */,
 				2D1837AA1C0195C8007627F0 /* CustomTabbar.m */,
+				2D594CEF1C2642BF006946CC /* RssNewsTableViewCell.h */,
+				2D594CF01C2642BF006946CC /* RssNewsTableViewCell.m */,
+				2D594CF51C2680BF006946CC /* ResourcesTableViewCell.h */,
+				2D594CF61C2680BF006946CC /* ResourcesTableViewCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -109,6 +131,12 @@
 				2D5E8EB41C082DCC00BD6E82 /* InsideWebViewController.m */,
 				2D55258D1C186C8100BF186F /* NewsViewController.h */,
 				2D55258E1C186C8100BF186F /* NewsViewController.m */,
+				2D594CF21C267749006946CC /* ResourcesViewController.h */,
+				2D594CF31C267749006946CC /* ResourcesViewController.m */,
+				2D594CF81C269494006946CC /* ResourceDetailViewController.h */,
+				2D594CF91C269494006946CC /* ResourceDetailViewController.m */,
+				2D594CFB1C269C84006946CC /* CustomNavigationController.h */,
+				2D594CFC1C269C84006946CC /* CustomNavigationController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -121,6 +149,8 @@
 				2D5E8EBA1C0AED1900BD6E82 /* NetworkTools.m */,
 				2DB466041C0C214200E2CCAF /* RefreshControlTool.h */,
 				2DB466051C0C214200E2CCAF /* RefreshControlTool.m */,
+				2D594CFE1C26C648006946CC /* SmartLoadMore.h */,
+				2D594CFF1C26C648006946CC /* SmartLoadMore.m */,
 			);
 			name = ToolKits;
 			sourceTree = "<group>";
@@ -300,16 +330,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D594CF71C2680BF006946CC /* ResourcesTableViewCell.m in Sources */,
+				2D594CFD1C269C84006946CC /* CustomNavigationController.m in Sources */,
+				2D594CFA1C269494006946CC /* ResourceDetailViewController.m in Sources */,
 				2D5E8EBB1C0AED1900BD6E82 /* NetworkTools.m in Sources */,
 				2D5E8EB51C082DCC00BD6E82 /* InsideWebViewController.m in Sources */,
+				2D594CF11C2642BF006946CC /* RssNewsTableViewCell.m in Sources */,
 				2D1837AB1C0195C8007627F0 /* CustomTabbar.m in Sources */,
 				2D55258B1C186C0D00BF186F /* RSSItem.m in Sources */,
 				2D6313AC1C017E4B0049942E /* AppDelegate.m in Sources */,
+				2D594CF41C267749006946CC /* ResourcesViewController.m in Sources */,
 				2D5E8EB21C082C1600BD6E82 /* TestViewController.m in Sources */,
 				2D6313A91C017E4B0049942E /* main.m in Sources */,
 				2D55258F1C186C8100BF186F /* NewsViewController.m in Sources */,
 				2D55258C1C186C0D00BF186F /* RSSParser.m in Sources */,
 				2DB466061C0C214200E2CCAF /* RefreshControlTool.m in Sources */,
+				2D594D001C26C648006946CC /* SmartLoadMore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

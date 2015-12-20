@@ -51,6 +51,7 @@ static BOOL webViewKVO;
     [self.webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:&webViewKVO];
     [self.webView addObserver:self forKeyPath:@"canGoBack" options:NSKeyValueObservingOptionNew context:&webViewKVO];
     [self.webView addObserver:self forKeyPath:@"canGoForward" options:NSKeyValueObservingOptionNew context:&webViewKVO];
+    [self.webView.scrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
     
     NSMutableURLRequest * req = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:self.urlStr] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15];
     [self.webView loadRequest:req];
@@ -75,6 +76,7 @@ static BOOL webViewKVO;
     [self.webView removeObserver:self forKeyPath:@"estimatedProgress" context:&webViewKVO];
     [self.webView removeObserver:self forKeyPath:@"canGoBack" context:&webViewKVO];
     [self.webView removeObserver:self forKeyPath:@"canGoForward" context:&webViewKVO];
+    [self.webView.scrollView removeObserver:self forKeyPath:@"contentOffset"];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
@@ -95,17 +97,30 @@ static BOOL webViewKVO;
                     self.loadProgressView.hidden = YES;
                     self.loadProgressView.alpha = 1;
                 }];
+            }
+        } else if ([keyPath isEqualToString:@"canGoBack"]) {
+            self.backBarButtonItem.enabled = self.webView.canGoBack;
+        } else if ([keyPath isEqualToString:@"canGoForward"]) {
+            self.forwardBarButtonItem.enabled = self.webView.canGoForward;
+        }
+    } else {
+        if ([keyPath isEqualToString:@"contentOffset"]) {
+            CGPoint new = [change[@"new"] CGPointValue];
+            if (new.y <= -40) {
                 NSString * baseUrlStr = self.webView.URL.absoluteString;
                 baseUrlStr = [[baseUrlStr componentsSeparatedByString:@"://"] lastObject];
                 baseUrlStr = [[baseUrlStr componentsSeparatedByString:@"/"] firstObject];
                 if (baseUrlStr) {
                     self.webOriginLabel.text = [NSString stringWithFormat:@"本页由 %@ 提供", baseUrlStr];
                 }
+                [UIView animateWithDuration:0.5 animations:^{
+                    self.webOriginLabel.alpha = 1;
+                }];
+            } else if (new.y >= 0) {
+                [UIView animateWithDuration:0.5 animations:^{
+                    self.webOriginLabel.alpha = 0;
+                }];
             }
-        } else if ([keyPath isEqualToString:@"canGoBack"]) {
-            self.backBarButtonItem.enabled = self.webView.canGoBack;
-        } else if ([keyPath isEqualToString:@"canGoForward"]) {
-            self.forwardBarButtonItem.enabled = self.webView.canGoForward;
         }
     }
 }

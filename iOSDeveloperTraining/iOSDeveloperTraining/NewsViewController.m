@@ -9,12 +9,18 @@
 #import "NewsViewController.h"
 #import "RSSParser.h"
 #import "InsideWebViewController.h"
+#import "RssNewsTableViewCell.h"
+#import "NetworkTools.h"
+#import "SmartLoadMore.h"
 
 @interface NewsViewController () <UITableViewDataSource, UITableViewDelegate>
+{
+    NSInteger _errorReloadCount;
+}
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic) NSMutableArray * rssUrls;
 @property (nonatomic) NSMutableArray * news;
+@property (nonatomic) SmartLoadMore * loadMore;
 
 @end
 
@@ -23,23 +29,40 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.rssUrls = [NSMutableArray array];
-    [self.rssUrls addObject:@"http://www.cocoachina.com/bbs/rss.php"];
     self.news = [NSMutableArray array];
     
-    NSURLRequest * req = [NSURLRequest requestWithURL:[NSURL URLWithString:self.rssUrls[0]]];
-    [RSSParser parseRSSFeedForRequest:req success:^(NSArray *feedItems) {
-        [self.news addObjectsFromArray:feedItems];
-        [self.tableView reloadData];
-    } failure:^(NSError *error) {
-        NSLog(@"%@", error);
+    self.loadMore = [SmartLoadMore loadMoreForTableView:self.tableView loadWith:^{
+        [self loadNewsWithOffset:self.news.count];
     }];
-    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
+- (void)loadNewsWithOffset:(NSInteger)offset {
+    
+    NSDictionary * paras = @{@"word":@"iOS开发", @"tn":@"newsrss", @"sr":@0, @"cl":@2, @"rn":@20, @"ct":@0, @"pn":@(offset)};
+    NSURLRequest * req = [[NetworkTools sharedHTTPRequestSerializer] requestWithMethod:@"GET" URLString:@"http://news.baidu.com/ns" parameters:paras error:nil];
+    [RSSParser parseRSSFeedForRequest:req success:^(NSArray *feedItems) {
+        if (!offset) {
+            [self.news removeAllObjects];
+        }
+        [self.news addObjectsFromArray:feedItems];
+        BOOL noMoreData = feedItems.count == 0 ? YES:NO;
+        [self.loadMore finishLoadAndNoMoreData:noMoreData];
+        _errorReloadCount = 0;
+    } failure:^(NSError *error) {
+        NSLog(@"%@", error);
+//        if (error.code == 6003 && _errorReloadCount++ <= 20) {
+//            [self loadNewsWithOffset:self.news.count+_errorReloadCount];
+//        }
+    }];
 }
 
 /*
@@ -56,13 +79,31 @@
     return self.news.count;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 100.0;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewAutomaticDimension;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    RssNewsTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"RssNews" forIndexPath:indexPath];
     
     RSSItem * item = self.news[indexPath.row];
     
-    cell.textLabel.text = item.title;
-    cell.detailTextLabel.text = item.itemDescription;
+    cell.numberLabel.text = [NSString stringWithFormat:@"%ld", (long)indexPath.row + 1];
+    cell.titleLabel.text = item.title;
+    NSData * data = [item.itemDescription dataUsingEncoding:NSUnicodeStringEncoding];
+    NSAttributedString * attrStr = nil;
+    @try {
+         attrStr = [[NSAttributedString alloc] initWithData:data options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType} documentAttributes:nil error:nil];
+    }
+    @catch (NSException *exception) {
+        NSLog(@"%@", exception);
+    }
+    cell.newsDescription.attributedText = attrStr;
+    cell.sourceLabel.text = item.author;
     
     return cell;
 }

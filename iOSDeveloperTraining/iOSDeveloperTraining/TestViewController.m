@@ -32,7 +32,7 @@
     
 //    _manager = [NetworkTools sharedHTTPSessionManager];
 //    _manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"application/javascript", nil];
-//    [_manager POST:@"http://wangb.local/test/wp-admin/admin-ajax.php" parameters:@{@"log":@"w3sy", @"pwd":@"kevin.000", @"lwa":@"1", @"login-with-ajax":@"login"} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+//    [_manager POST:@"http://wangb.local/test/wp-admin/admin-ajax.php" parameters:@{@"log":@"w3sy", @"pwd":@"123", @"lwa":@"1", @"login-with-ajax":@"login"} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
 //        NSLog(@"%@", responseObject);
 //        
 //    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
