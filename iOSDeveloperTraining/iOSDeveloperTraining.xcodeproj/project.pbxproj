@@ -17,7 +17,6 @@
 		2D594CFA1C269494006946CC /* ResourceDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D594CF91C269494006946CC /* ResourceDetailViewController.m */; };
 		2D594CFD1C269C84006946CC /* CustomNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D594CFC1C269C84006946CC /* CustomNavigationController.m */; };
 		2D594D001C26C648006946CC /* SmartLoadMore.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D594CFF1C26C648006946CC /* SmartLoadMore.m */; };
-		2D5E8EB21C082C1600BD6E82 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5E8EB11C082C1600BD6E82 /* TestViewController.m */; };
 		2D5E8EB51C082DCC00BD6E82 /* InsideWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5E8EB41C082DCC00BD6E82 /* InsideWebViewController.m */; };
 		2D5E8EB71C09C93000BD6E82 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D5E8EB61C09C93000BD6E82 /* WebKit.framework */; };
 		2D5E8EBB1C0AED1900BD6E82 /* NetworkTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5E8EBA1C0AED1900BD6E82 /* NetworkTools.m */; };
@@ -53,8 +52,6 @@
 		2D594CFC1C269C84006946CC /* CustomNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNavigationController.m; sourceTree = "<group>"; };
 		2D594CFE1C26C648006946CC /* SmartLoadMore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartLoadMore.h; sourceTree = "<group>"; };
 		2D594CFF1C26C648006946CC /* SmartLoadMore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartLoadMore.m; sourceTree = "<group>"; };
-		2D5E8EB01C082C1600BD6E82 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
-		2D5E8EB11C082C1600BD6E82 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		2D5E8EB31C082DCC00BD6E82 /* InsideWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InsideWebViewController.h; sourceTree = "<group>"; };
 		2D5E8EB41C082DCC00BD6E82 /* InsideWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InsideWebViewController.m; sourceTree = "<group>"; };
 		2D5E8EB61C09C93000BD6E82 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
@@ -125,8 +122,6 @@
 		2D5E8EAF1C082BE100BD6E82 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				2D5E8EB01C082C1600BD6E82 /* TestViewController.h */,
-				2D5E8EB11C082C1600BD6E82 /* TestViewController.m */,
 				2D5E8EB31C082DCC00BD6E82 /* InsideWebViewController.h */,
 				2D5E8EB41C082DCC00BD6E82 /* InsideWebViewController.m */,
 				2D55258D1C186C8100BF186F /* NewsViewController.h */,
@@ -340,7 +335,6 @@
 				2D55258B1C186C0D00BF186F /* RSSItem.m in Sources */,
 				2D6313AC1C017E4B0049942E /* AppDelegate.m in Sources */,
 				2D594CF41C267749006946CC /* ResourcesViewController.m in Sources */,
-				2D5E8EB21C082C1600BD6E82 /* TestViewController.m in Sources */,
 				2D6313A91C017E4B0049942E /* main.m in Sources */,
 				2D55258F1C186C8100BF186F /* NewsViewController.m in Sources */,
 				2D55258C1C186C0D00BF186F /* RSSParser.m in Sources */,

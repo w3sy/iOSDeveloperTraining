@@ -12,6 +12,7 @@
 #import "RssNewsTableViewCell.h"
 #import "NetworkTools.h"
 #import "SmartLoadMore.h"
+#import "RefreshControlTool.h"
 
 @interface NewsViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -19,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) NSMutableArray * news;
 @property (nonatomic) SmartLoadMore * loadMore;
+@property (nonatomic) CBStoreHouseRefreshControl *refreshControl;
 
 @end
 
@@ -32,6 +34,8 @@
     self.loadMore = [SmartLoadMore loadMoreForTableView:self.tableView loadWith:^{
         [self loadNewsWithOffset:self.news.count];
     }];
+    
+    self.refreshControl = [RefreshControlTool attachToScrollView:self.tableView target:self refreshAction:@selector(refreshAction:)];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,7 +50,10 @@
 - (void)loadNewsWithOffset:(NSInteger)offset {
     
     NSDictionary * paras = @{@"word":@"iOS", @"tn":@"newsrss", @"sr":@0, @"cl":@2, @"rn":@20, @"ct":@0, @"pn":@(offset)};
-    NSURLRequest * req = [[NetworkTools sharedHTTPRequestSerializer] requestWithMethod:@"GET" URLString:@"http://news.baidu.com/ns" parameters:paras error:nil];
+    NSMutableURLRequest * req = [[NetworkTools sharedHTTPRequestSerializer] requestWithMethod:@"GET" URLString:@"http://news.baidu.com/ns" parameters:paras error:nil];
+    if (!offset) {
+        req.cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
+    }
     [RSSParser parseRSSFeedForRequest:req success:^(NSArray *feedItems) {
         if (!offset) {
             [self.news removeAllObjects];
@@ -54,9 +61,14 @@
         [self.news addObjectsFromArray:feedItems];
         BOOL noMoreData = feedItems.count == 0 ? YES:NO;
         [self.loadMore finishLoadAndNoMoreData:noMoreData];
+        [self.refreshControl finishingLoading];
     } failure:^(NSError *error) {
         NSLog(@"%@", error);
     }];
+}
+
+- (void)refreshAction:(id)sender {
+    [self loadNewsWithOffset:0];
 }
 
 /*
@@ -68,6 +80,15 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [self.refreshControl scrollViewDidScroll];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    [self.refreshControl scrollViewDidEndDragging];
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.news.count;
@@ -87,6 +108,7 @@
     RSSItem * item = self.news[indexPath.row];
     
     cell.numberLabel.text = [NSString stringWithFormat:@"%ld", (long)indexPath.row + 1];
+    [cell.numberLabel needsUpdateConstraints];
     cell.titleLabel.text = item.title;
     NSData * data = [item.itemDescription dataUsingEncoding:NSUnicodeStringEncoding];
     NSAttributedString * attrStr = nil;
@@ -98,6 +120,9 @@
     }
     cell.newsDescription.attributedText = attrStr;
     cell.sourceLabel.text = item.author;
+    NSDateFormatter * df = [[NSDateFormatter alloc] init];
+    df.dateFormat = @"yyyy-MM-dd hh:mm:ss";
+    cell.pubDateLabel.text = [df stringFromDate:item.pubDate];
     
     return cell;
 }

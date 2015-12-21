@@ -30,7 +30,7 @@
         
         _formatter = [[NSDateFormatter alloc] init];
         [_formatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_EN"]];
-        [_formatter setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss Z"];
+        [_formatter setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss"];
     }
     return self;
 }
@@ -154,7 +154,7 @@
             if (arr.count == 2) {
                 NSString * newStr = [NSString stringWithFormat:@"%@encoding=\"utf8\"?%@", arr[0], arr[1]];
                 _tempData = [newStr dataUsingEncoding:NSUTF8StringEncoding];
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     [self xmlparserWith:_tempData];
                 });
             }
