@@ -12,6 +12,9 @@
 #import "AFURLResponseSerialization.h"
 
 @interface RSSParser()
+{
+    NSData * _tempData;
+}
 
 @property (nonatomic) NSDateFormatter *formatter;
 
@@ -53,19 +56,28 @@
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:urlRequest];
     
-    operation.responseSerializer = [[AFXMLParserResponseSerializer alloc] init];
+    operation.responseSerializer = [[AFHTTPResponseSerializer alloc] init];
     operation.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/xml", @"text/xml",@"application/rss+xml", @"application/atom+xml", nil];
     
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         failblock = [failure copy];
-        [(NSXMLParser *)responseObject setDelegate:self];
-        [(NSXMLParser *)responseObject parse];
+//        [(NSXMLParser *)responseObject setDelegate:self];
+//        [(NSXMLParser *)responseObject parse];
+        _tempData = responseObject;
+        [self xmlparserWith:_tempData];
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         failure(error);
     }];
     
     [operation start];
     
+}
+
+- (void)xmlparserWith:(NSData *)data {
+    NSXMLParser * parser = [[NSXMLParser alloc] initWithData:data];
+    parser.delegate = self;
+    [parser parse];
 }
 
 #pragma mark -
@@ -132,6 +144,22 @@
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
     failblock(parseError);
     [parser abortParsing];
+    if (parseError.code == 6003) {
+        NSString * tempStr;
+        NSStringEncoding encoding = [NSString stringEncodingForData:_tempData encodingOptions:nil convertedString:&tempStr usedLossyConversion:nil];
+        //NSLog(@"%@\n%lu", tempStr, (unsigned long)encoding);
+        NSStringEncoding encodingGB1232 =  CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+        if (encoding == encodingGB1232) {
+            NSArray * arr = [tempStr componentsSeparatedByString:@"encoding=\"gb2312\"?"];
+            if (arr.count == 2) {
+                NSString * newStr = [NSString stringWithFormat:@"%@encoding=\"utf8\"?%@", arr[0], arr[1]];
+                _tempData = [newStr dataUsingEncoding:NSUTF8StringEncoding];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [self xmlparserWith:_tempData];
+                });
+            }
+        }
+    }
 }
 
 #pragma mark -

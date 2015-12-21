@@ -14,9 +14,7 @@
 #import "SmartLoadMore.h"
 
 @interface NewsViewController () <UITableViewDataSource, UITableViewDelegate>
-{
-    NSInteger _errorReloadCount;
-}
+
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) NSMutableArray * news;
@@ -47,7 +45,7 @@
 
 - (void)loadNewsWithOffset:(NSInteger)offset {
     
-    NSDictionary * paras = @{@"word":@"iOS开发", @"tn":@"newsrss", @"sr":@0, @"cl":@2, @"rn":@20, @"ct":@0, @"pn":@(offset)};
+    NSDictionary * paras = @{@"word":@"iOS", @"tn":@"newsrss", @"sr":@0, @"cl":@2, @"rn":@20, @"ct":@0, @"pn":@(offset)};
     NSURLRequest * req = [[NetworkTools sharedHTTPRequestSerializer] requestWithMethod:@"GET" URLString:@"http://news.baidu.com/ns" parameters:paras error:nil];
     [RSSParser parseRSSFeedForRequest:req success:^(NSArray *feedItems) {
         if (!offset) {
@@ -56,12 +54,8 @@
         [self.news addObjectsFromArray:feedItems];
         BOOL noMoreData = feedItems.count == 0 ? YES:NO;
         [self.loadMore finishLoadAndNoMoreData:noMoreData];
-        _errorReloadCount = 0;
     } failure:^(NSError *error) {
         NSLog(@"%@", error);
-//        if (error.code == 6003 && _errorReloadCount++ <= 20) {
-//            [self loadNewsWithOffset:self.news.count+_errorReloadCount];
-//        }
     }];
 }
 
