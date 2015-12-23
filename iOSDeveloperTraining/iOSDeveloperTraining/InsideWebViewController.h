@@ -8,8 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ *  应用内浏览器界面控制器
+ */
 @interface InsideWebViewController : UIViewController
 
+/**
+ *  加载页面
+ *
+ *  @param urlStr 加载页面地址字符串
+ */
 - (void)loadWithUrlString:(NSString *)urlStr;
 
 @end

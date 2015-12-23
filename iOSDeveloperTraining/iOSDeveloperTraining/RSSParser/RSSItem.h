@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ *  Rss新闻model
+ */
 @interface RSSItem : NSObject <NSCoding>
 
 @property (strong,nonatomic) NSString *title;

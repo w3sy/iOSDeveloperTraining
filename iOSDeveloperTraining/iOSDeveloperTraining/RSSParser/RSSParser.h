@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "RSSItem.h"
 
+/**
+ *  RSS解析器
+ */
 @interface RSSParser : NSObject <NSXMLParserDelegate> {
     RSSItem *currentItem;
     NSMutableArray *items;
@@ -19,11 +22,24 @@
 }
 
 
-
+/**
+ *  +解析RSS文档
+ *
+ *  @param urlRequest RSS地址请求
+ *  @param success    解析成功后交付RSSItem的数组
+ *  @param failure    失败后交付失败信息
+ */
 + (void)parseRSSFeedForRequest:(NSURLRequest *)urlRequest
                        success:(void (^)(NSArray *feedItems))success
                        failure:(void (^)(NSError *error))failure;
 
+/**
+ *  －解析RSS文档
+ *
+ *  @param urlRequest RSS地址请求
+ *  @param success    解析成功后交付RSSItem的数组
+ *  @param failure    失败后交付失败信息
+ */
 - (void)parseRSSFeedForRequest:(NSURLRequest *)urlRequest
                        success:(void (^)(NSArray *feedItems))success
                        failure:(void (^)(NSError *error))failure;
