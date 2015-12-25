@@ -1,9 +1,9 @@
 //
 //  RSSParser.m
-//  RSSParser
+//  iOSDeveloperTraining
 //
-//  Created by Thibaut LE LEVIER on 1/31/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by 王博 on 15/11/29.
+//  Copyright © 2015年 wangbo. All rights reserved.
 //
 
 #import "RSSParser.h"
@@ -61,8 +61,6 @@
     
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         failblock = [failure copy];
-//        [(NSXMLParser *)responseObject setDelegate:self];
-//        [(NSXMLParser *)responseObject parse];
         _tempData = responseObject;
         [self xmlparserWith:_tempData];
         
@@ -144,6 +142,7 @@
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
     failblock(parseError);
     [parser abortParsing];
+    // 修正百度编码错误
     if (parseError.code == 6003) {
         NSString * tempStr;
         NSStringEncoding encoding = [NSString stringEncodingForData:_tempData encodingOptions:nil convertedString:&tempStr usedLossyConversion:nil];

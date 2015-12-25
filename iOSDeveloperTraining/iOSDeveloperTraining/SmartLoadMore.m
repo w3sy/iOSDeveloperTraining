@@ -22,13 +22,6 @@
 
 static void * SmartLoadMoreFootViewContext;
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
 + (instancetype)loadMoreForTableView:(UITableView *)tableView loadWith:(void (^)())loadBlock {
     return [[self alloc] initForTableView:tableView loadWith:loadBlock];
@@ -43,8 +36,8 @@ static void * SmartLoadMoreFootViewContext;
 }
 
 - (void)finishLoadAndNoMoreData:(BOOL)noMoreData {
+    [self.tableView reloadData];
     if (!noMoreData) {
-        [self.tableView reloadData];
         _isLoadling = NO;
     }
 }
@@ -71,6 +64,7 @@ static void * SmartLoadMoreFootViewContext;
             CGFloat contentOffsetY = [change[@"new"] CGPointValue].y;
             CGFloat contentHeight = self.tableView.contentSize.height;
             CGFloat tableViewHeight = self.tableView.bounds.size.height;
+            // tableview显示内容将尽时，加载更多
             if (tableViewHeight + tableViewHeight + contentOffsetY >= contentHeight) {
                 @synchronized(self) {
                     [self startLoad];

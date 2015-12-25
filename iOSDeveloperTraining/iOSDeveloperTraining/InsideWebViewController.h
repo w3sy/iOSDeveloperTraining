@@ -14,7 +14,7 @@
 @interface InsideWebViewController : UIViewController
 
 /**
- *  加载页面
+ *  设置加载页面地址
  *
  *  @param urlStr 加载页面地址字符串
  */

@@ -1,9 +1,9 @@
 //
 //  RSSItem.h
-//  RSSParser
+//  iOSDeveloperTraining
 //
-//  Created by Thibaut LE LEVIER on 2/3/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by 王博 on 15/11/29.
+//  Copyright © 2015年 wangbo. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -24,7 +24,10 @@
 @property (strong,nonatomic) NSString *author;
 @property (strong,nonatomic) NSString *guid;
 
+@property (strong,nonatomic) NSAttributedString * attrDescription;
+
 -(NSArray *)imagesFromItemDescription;
 -(NSArray *)imagesFromContent;
+
 
 @end

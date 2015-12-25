@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ *  自定义资讯Cell
+ */
 @interface RssNewsTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *numberLabel;

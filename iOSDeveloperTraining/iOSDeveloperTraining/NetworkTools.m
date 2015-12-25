@@ -47,7 +47,7 @@
             case AFNetworkReachabilityStatusUnknown:
             case AFNetworkReachabilityStatusReachableViaWWAN:
             default:
-                [NetworkTools sharedHTTPRequestSerializer].cachePolicy = NSURLRequestUseProtocolCachePolicy;
+                [NetworkTools sharedHTTPRequestSerializer].cachePolicy = NSURLRequestReturnCacheDataElseLoad;
                 break;
         }
     }];

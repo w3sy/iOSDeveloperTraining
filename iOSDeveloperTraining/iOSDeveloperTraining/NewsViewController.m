@@ -110,21 +110,24 @@
     cell.numberLabel.text = [NSString stringWithFormat:@"%ld", (long)indexPath.row + 1];
     [cell.numberLabel needsUpdateConstraints];
     cell.titleLabel.text = item.title;
-    NSData * data = [item.itemDescription dataUsingEncoding:NSUnicodeStringEncoding];
-    NSAttributedString * attrStr = nil;
-    @try {
-         attrStr = [[NSAttributedString alloc] initWithData:data options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType} documentAttributes:nil error:nil];
-    }
-    @catch (NSException *exception) {
-        NSLog(@"%@", exception);
-    }
-    cell.newsDescription.attributedText = attrStr;
+    cell.newsDescription.attributedText = item.attrDescription;
     cell.sourceLabel.text = item.author;
     NSDateFormatter * df = [[NSDateFormatter alloc] init];
     df.dateFormat = @"yyyy-MM-dd hh:mm:ss";
     cell.pubDateLabel.text = [df stringFromDate:item.pubDate];
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -1,9 +1,9 @@
 //
 //  RSSParser.h
-//  RSSParser
+//  iOSDeveloperTraining
 //
-//  Created by Thibaut LE LEVIER on 1/31/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by 王博 on 15/11/29.
+//  Copyright © 2015年 wangbo. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

@@ -20,6 +20,7 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     //NSLog(@"%@", NSHomeDirectory());
+    // 开启网络状态监测
     [NetworkTools startReachabilityMonitoringWithDefaultBlock];
     
     return YES;

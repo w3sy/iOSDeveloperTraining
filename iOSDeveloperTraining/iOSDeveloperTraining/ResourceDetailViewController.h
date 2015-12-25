@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ *  资源详情页
+ */
 @interface ResourceDetailViewController : UIViewController
 
 @property (nonatomic) NSDictionary * resourceDetailDict;

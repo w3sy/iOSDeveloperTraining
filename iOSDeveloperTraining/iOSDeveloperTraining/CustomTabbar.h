@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ *  自定义标签栏
+ */
 @interface CustomTabbar : UITabBar
 
 @end

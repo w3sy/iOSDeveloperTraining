@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ *  资源页控制器
+ */
 @interface ResourcesViewController : UIViewController
 
 @end

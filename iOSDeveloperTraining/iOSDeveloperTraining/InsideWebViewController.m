@@ -63,7 +63,7 @@ static BOOL webViewKVO;
     [self.webView.scrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
     
     // 创建加载请求
-    NSMutableURLRequest * req = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:self.urlStr] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:15];
+    NSMutableURLRequest * req = [NetworkTools requestGETWithUrlString:self.urlStr];
     [self.webView loadRequest:req];
 }
 
@@ -150,34 +150,27 @@ static BOOL webViewKVO;
     }
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-
 
 - (void)loadWithUrlString:(NSString *)urlStr {
     self.urlStr = urlStr;
 }
 
+// 关闭页面
 - (IBAction)closeAction:(UIBarButtonItem *)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+// 刷新页面
 - (IBAction)refreshAction:(UIBarButtonItem *)sender {
     [self.webView reloadFromOrigin];
 }
 
+// 后退
 - (IBAction)backAction:(UIBarButtonItem *)sender {
     [self.webView goBack];
 }
 
+// 前进
 - (IBAction)forwardAction:(UIBarButtonItem *)sender {
     [self.webView goForward];
 }

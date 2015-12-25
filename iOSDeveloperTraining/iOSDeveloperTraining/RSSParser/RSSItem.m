@@ -1,9 +1,9 @@
 //
 //  RSSItem.m
-//  RSSParser
+//  iOSDeveloperTraining
 //
-//  Created by Thibaut LE LEVIER on 2/3/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by 王博 on 15/11/29.
+//  Copyright © 2015年 wangbo. All rights reserved.
 //
 
 #import "RSSItem.h"
@@ -108,6 +108,20 @@
 - (NSString *)description
 {
     return [NSString stringWithFormat:@"<%@: %@>", [self class], [self.title stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
+}
+
+- (void)setItemDescription:(NSString *)itemDescription {
+    _itemDescription = itemDescription;
+    
+    NSData * data = [itemDescription dataUsingEncoding:NSUnicodeStringEncoding];
+    NSAttributedString * attrStr = nil;
+    @try {
+        attrStr = [[NSAttributedString alloc] initWithData:data options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType} documentAttributes:nil error:nil];
+    }
+    @catch (NSException *exception) {
+        NSLog(@"%@", exception);
+    }
+    self.attrDescription = attrStr;
 }
 
 @end
