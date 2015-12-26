@@ -138,7 +138,7 @@ static BOOL webViewKVO;
                 baseUrlStr = [[baseUrlStr componentsSeparatedByString:@"://"] lastObject];
                 baseUrlStr = [[baseUrlStr componentsSeparatedByString:@"/"] firstObject];
                 if (baseUrlStr) {
-                    self.webOriginLabel.text = [NSString stringWithFormat:@"本页由 %@ 提供", baseUrlStr];
+                    self.webOriginLabel.text = [NSString stringWithFormat:NSLocalizedStringFromTable(@"本页由 %@ 提供", @"Localization", @"本页由 %@ 提供"), baseUrlStr];
                 }
                 [UIView animateWithDuration:0.5 animations:^{
                     self.webOriginLabel.alpha = 1;

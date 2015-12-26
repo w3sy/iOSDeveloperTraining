@@ -1,0 +1,18 @@
+/* 
+  Localization.strings
+  iOSDeveloperTraining
+
+  Created by 王博 on 15/12/26.
+  Copyright © 2015年 wangbo. All rights reserved.
+*/
+
+"当前无网络" = "No network";
+"正在使用Wi-Fi网络" = "Using Wi-Fi network";
+"正在蜂窝数据网络" = "Using cellular network";
+
+"本页由 %@ 提供" = "Provided by %@";
+
+"正在加载" = "Loading...";
+"没有更多了" = "No more data";
+
+"二维码分享" = "QRcode Share";

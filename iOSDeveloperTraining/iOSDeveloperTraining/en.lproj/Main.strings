@@ -1,0 +1,45 @@
+
+/* Class = "UITabBarItem"; title = "资讯"; ObjectID = "4nX-o7-ihI"; */
+"4nX-o7-ihI.title" = "News";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "I08-N7-kOq"; */
+"I08-N7-kOq.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "KGz-JD-efG"; */
+"KGz-JD-efG.text" = "Label";
+
+/* Class = "UITabBarItem"; title = "资源"; ObjectID = "KWO-ic-wXW"; */
+"KWO-ic-wXW.title" = "Resources";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "MnE-eG-RYz"; */
+"MnE-eG-RYz.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "NTf-oG-YhV"; */
+"NTf-oG-YhV.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "资讯"; ObjectID = "OW5-gl-dGF"; */
+"OW5-gl-dGF.title" = "News";
+
+/* Class = "UINavigationItem"; title = "资源"; ObjectID = "bpY-P7-Zxb"; */
+"bpY-P7-Zxb.title" = "Resources";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "i6O-eA-MCl"; */
+"i6O-eA-MCl.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "loN-R6-l2b"; */
+"loN-R6-l2b.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "mJg-xW-IkM"; */
+"mJg-xW-IkM.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "nEj-Eq-ges"; */
+"nEj-Eq-ges.text" = "Label";
+
+/* Class = "UILabel"; text = "正在加载"; ObjectID = "r9P-b5-nPt"; */
+"r9P-b5-nPt.text" = "Loading...";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "xDd-Mg-pTu"; */
+"xDd-Mg-pTu.text" = "Label";
+
+/* Class = "UILabel"; text = "88"; ObjectID = "yzP-WJ-W6y"; */
+"yzP-WJ-W6y.text" = "88";

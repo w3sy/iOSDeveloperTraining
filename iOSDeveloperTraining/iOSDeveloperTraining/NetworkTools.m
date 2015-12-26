@@ -39,14 +39,14 @@
         switch (status) {
             case AFNetworkReachabilityStatusNotReachable:
                 [NetworkTools sharedHTTPRequestSerializer].cachePolicy = NSURLRequestReturnCacheDataDontLoad;
-                [BlueAlertView showAlertViewWithMessage:@"当前无网络" onView:nil];
+                [BlueAlertView showAlertViewWithMessage:NSLocalizedStringFromTable(@"当前无网络", @"Localization", @"当前无网络") onView:nil];
                 break;
             case AFNetworkReachabilityStatusReachableViaWiFi:
                 [NetworkTools sharedHTTPRequestSerializer].cachePolicy = NSURLRequestUseProtocolCachePolicy;
-                [BlueAlertView showAlertViewWithMessage:@"正在使用WiFi网络" onView:nil];
+                [BlueAlertView showAlertViewWithMessage:NSLocalizedStringFromTable(@"正在使用Wi-Fi网络", @"Localization", @"正在使用Wi-Fi网络") onView:nil];
                 break;
             case AFNetworkReachabilityStatusReachableViaWWAN:
-                [BlueAlertView showAlertViewWithMessage:@"正在蜂窝数据网络" onView:nil];
+                [BlueAlertView showAlertViewWithMessage:NSLocalizedStringFromTable(@"正在蜂窝数据网络", @"Localization", @"正在蜂窝数据网络") onView:nil];
             case AFNetworkReachabilityStatusUnknown:
             default:
                 [NetworkTools sharedHTTPRequestSerializer].cachePolicy = NSURLRequestReturnCacheDataElseLoad;

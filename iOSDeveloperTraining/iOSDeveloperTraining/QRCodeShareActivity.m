@@ -25,7 +25,7 @@
     return @"QRCodeShareActivity";
 }
 - (nullable NSString *)activityTitle {
-    return @"二维码分享";
+    return NSLocalizedStringFromTable(@"二维码分享", @"Localization", @"二维码分享");
 }
 - (nullable UIImage *)activityImage {
     return [UIImage imageNamed:@"QRCode"];

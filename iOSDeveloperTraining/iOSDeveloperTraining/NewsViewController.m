@@ -43,11 +43,11 @@
         AFNetworkReachabilityStatus status = (AFNetworkReachabilityStatus)note.userInfo[AFNetworkingReachabilityNotificationStatusItem];
         if (status == AFNetworkReachabilityStatusNotReachable) {
             [self.loadMoreIndicatorView stopAnimating];
-            self.loadMoreLabel.text = @"目前没有网络";
+            self.loadMoreLabel.text = NSLocalizedStringFromTable(@"当前无网络", @"Localization", @"当前无网络");
             [self.loadMore finishLoadAndNoMoreData:YES];
         } else {
             [self.loadMoreIndicatorView startAnimating];
-            self.loadMoreLabel.text = @"正在加载";
+            self.loadMoreLabel.text = NSLocalizedStringFromTable(@"正在加载", @"Localization", @"正在加载");
             [self.loadMore startLoad];
         }
     }];
@@ -64,7 +64,7 @@
 
 - (void)loadNewsWithOffset:(NSInteger)offset refresh:(BOOL)refresh {
     
-    NSDictionary * paras = @{@"word":@"iOS开发", @"tn":@"newsrss", @"sr":@0, @"cl":@2, @"rn":@20, @"ct":@0, @"pn":@(offset)};
+    NSDictionary * paras = @{@"word":@"iOS", @"tn":@"newsrss", @"sr":@0, @"cl":@2, @"rn":@20, @"ct":@0, @"pn":@(offset)};
     NSMutableURLRequest * req = [[NetworkTools sharedHTTPRequestSerializer] requestWithMethod:@"GET" URLString:@"http://news.baidu.com/ns" parameters:paras error:nil];
     if (refresh) {
         req.cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
@@ -78,7 +78,10 @@
         [self.loadMore finishLoadAndNoMoreData:noMoreData];
         if (noMoreData) {
             [self.loadMoreIndicatorView stopAnimating];
-            self.loadMoreLabel.text = @"没有更多了";
+            self.loadMoreLabel.text = NSLocalizedStringFromTable(@"没有更多了", @"Localization", @"没有更多了");
+        } else {
+            [self.loadMoreIndicatorView startAnimating];
+            self.loadMoreLabel.text = NSLocalizedStringFromTable(@"正在加载", @"Localization", @"正在加载");
         }
         [self.refreshControl finishingLoading];
     } failure:^(NSError *error) {
@@ -87,9 +90,9 @@
         if (error.code == -1009) {
             [NetworkTools sharedHTTPRequestSerializer].cachePolicy = NSURLRequestReturnCacheDataDontLoad;
             [self loadNewsWithOffset:offset refresh:NO];
-        } else {
+        } else if (error.code == -1008) {
             [self.loadMoreIndicatorView stopAnimating];
-            self.loadMoreLabel.text = @"目前没有网络";
+            self.loadMoreLabel.text = NSLocalizedStringFromTable(@"没有更多了", @"Localization", @"没有更多了");
             [self.loadMore finishLoadAndNoMoreData:YES];
         }
     }];
