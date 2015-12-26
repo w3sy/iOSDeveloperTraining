@@ -24,6 +24,7 @@
 - (IBAction)refreshAction:(UIBarButtonItem *)sender;
 - (IBAction)backAction:(UIBarButtonItem *)sender;
 - (IBAction)forwardAction:(UIBarButtonItem *)sender;
+- (IBAction)shareAction:(UIBarButtonItem *)sender;
 
 @end
 
@@ -173,6 +174,14 @@ static BOOL webViewKVO;
 // 前进
 - (IBAction)forwardAction:(UIBarButtonItem *)sender {
     [self.webView goForward];
+}
+
+// 分享动作
+- (IBAction)shareAction:(id)sender {
+    
+    NSURL * url = self.webView.URL;
+    UIActivityViewController * avc = [[UIActivityViewController alloc] initWithActivityItems:@[url] applicationActivities:nil];
+    [self presentViewController:avc animated:YES completion:nil];
 }
 
 @end

@@ -16,6 +16,11 @@
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UIView *titleBgView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *titleViewOffsetConstraint;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *authorLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UIView *titleView;
 
 @end
 
@@ -25,14 +30,20 @@
     [super viewDidLoad];
     _currentStatusBarStyle = UIStatusBarStyleDefault;
     
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
-    
     NSString * content = self.resourceDetailDict[@"content"];
     [self.webView loadHTMLString:content baseURL:nil];
     self.webView.scrollView.contentInset = UIEdgeInsetsMake(200, 0, 0, 0);
     [self.webView.scrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
     
+    self.titleLabel.text = self.resourceDetailDict[@"title"];
+    self.authorLabel.text = self.resourceDetailDict[@"author"][@"name"];
+    self.dateLabel.text = self.resourceDetailDict[@"date"];
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -57,6 +68,8 @@
     if ([keyPath isEqualToString:@"contentOffset"]) {
         CGPoint old = [change[@"old"] CGPointValue];
         CGPoint new = [change[@"new"] CGPointValue];
+        self.titleViewOffsetConstraint.constant = -new.y - 244;
+        self.titleView.alpha = -new.y/264;
         if (old.y < new.y) {
             if (new.y > -64) {
                 self.titleBgView.hidden = NO;
@@ -66,6 +79,7 @@
                 }];
                 _currentStatusBarStyle = UIStatusBarStyleLightContent;
                 [self setNeedsStatusBarAppearanceUpdate];
+                self.title = self.resourceDetailDict[@"title"];
             }
         } else {
             if (new.y < -64) {
@@ -77,6 +91,7 @@
                 }];
                 _currentStatusBarStyle = UIStatusBarStyleDefault;
                 [self setNeedsStatusBarAppearanceUpdate];
+                self.title = nil;
             }
         }
     }
