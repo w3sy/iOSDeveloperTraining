@@ -13,6 +13,9 @@
  */
 @interface SmartLoadMore : NSObject
 
+@property (nonatomic, readonly) BOOL isLoadling;
+@property (nonatomic, readonly) BOOL noMoreData;
+
 /**
  *  ＋获得自动加载对象
  *

@@ -30,11 +30,20 @@
     _dataArray = [NSMutableArray array];
     _manager = [NetworkTools sharedHTTPSessionManager];
     
+    [self loadDataWithPage:1];
+}
+
+- (void)loadDataWithPage:(NSInteger)page {
     [_manager GET:@"https://swkits.com/develop/wp-json/posts" parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
         [_dataArray addObjectsFromArray:responseObject];
         [self.tableView reloadData];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"%@", error);
+        // 当没有网络时
+        if (error.code == -1009) {
+            [NetworkTools sharedHTTPRequestSerializer].cachePolicy = NSURLRequestReturnCacheDataDontLoad;
+            [self loadDataWithPage:page];
+        }
     }];
 }
 

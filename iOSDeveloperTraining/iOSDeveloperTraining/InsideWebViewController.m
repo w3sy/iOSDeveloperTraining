@@ -8,6 +8,7 @@
 
 #import "InsideWebViewController.h"
 #import "NetworkTools.h"
+#import "QRCodeShareActivity.h"
 #import <WebKit/WebKit.h>
 
 @interface InsideWebViewController ()
@@ -180,7 +181,9 @@ static BOOL webViewKVO;
 - (IBAction)shareAction:(id)sender {
     
     NSURL * url = self.webView.URL;
-    UIActivityViewController * avc = [[UIActivityViewController alloc] initWithActivityItems:@[url] applicationActivities:nil];
+    QRCodeShareActivity * qrActivity = [[QRCodeShareActivity alloc] init];
+    NSArray *applicationActivities = @[qrActivity];
+    UIActivityViewController * avc = [[UIActivityViewController alloc] initWithActivityItems:@[url] applicationActivities:applicationActivities];
     [self presentViewController:avc animated:YES completion:nil];
 }
 

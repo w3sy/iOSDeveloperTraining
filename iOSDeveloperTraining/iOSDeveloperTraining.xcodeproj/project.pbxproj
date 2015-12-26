@@ -25,6 +25,11 @@
 		2D6313B21C017E4B0049942E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D6313B01C017E4B0049942E /* Main.storyboard */; };
 		2D6313B41C017E4B0049942E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D6313B31C017E4B0049942E /* Assets.xcassets */; };
 		2D6313BF1C017FDD0049942E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D6313BE1C017FDD0049942E /* LaunchScreen.xib */; };
+		2D6926421C2E5D3A00BA3508 /* BlueAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D6926411C2E5D3A00BA3508 /* BlueAlertView.m */; };
+		2D6926481C2E76FF00BA3508 /* QRCodeShareActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D6926471C2E76FF00BA3508 /* QRCodeShareActivity.m */; };
+		2D69264B1C2E84E400BA3508 /* NSString+QRCodeImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D69264A1C2E84E400BA3508 /* NSString+QRCodeImage.m */; };
+		2D69264F1C2E854100BA3508 /* QRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D69264D1C2E854100BA3508 /* QRCodeViewController.m */; };
+		2D6926501C2E854100BA3508 /* QRCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D69264E1C2E854100BA3508 /* QRCodeViewController.xib */; };
 		2DB466031C0C1E9000E2CCAF /* loading.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DB466021C0C1E9000E2CCAF /* loading.plist */; };
 		2DB466061C0C214200E2CCAF /* RefreshControlTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB466051C0C214200E2CCAF /* RefreshControlTool.m */; };
 		486733C3A624421538E4AB34 /* Pods_iOSDeveloperTraining.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38326F6F2CE0F8D035A484CB /* Pods_iOSDeveloperTraining.framework */; };
@@ -65,6 +70,15 @@
 		2D6313B31C017E4B0049942E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2D6313B81C017E4B0049942E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D6313BE1C017FDD0049942E /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		2D6926401C2E5D3A00BA3508 /* BlueAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlueAlertView.h; sourceTree = "<group>"; };
+		2D6926411C2E5D3A00BA3508 /* BlueAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlueAlertView.m; sourceTree = "<group>"; };
+		2D6926461C2E76FF00BA3508 /* QRCodeShareActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeShareActivity.h; sourceTree = "<group>"; };
+		2D6926471C2E76FF00BA3508 /* QRCodeShareActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeShareActivity.m; sourceTree = "<group>"; };
+		2D6926491C2E84E400BA3508 /* NSString+QRCodeImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+QRCodeImage.h"; sourceTree = "<group>"; };
+		2D69264A1C2E84E400BA3508 /* NSString+QRCodeImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+QRCodeImage.m"; sourceTree = "<group>"; };
+		2D69264C1C2E854100BA3508 /* QRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeViewController.h; sourceTree = "<group>"; };
+		2D69264D1C2E854100BA3508 /* QRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeViewController.m; sourceTree = "<group>"; };
+		2D69264E1C2E854100BA3508 /* QRCodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QRCodeViewController.xib; sourceTree = "<group>"; };
 		2DB466021C0C1E9000E2CCAF /* loading.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = loading.plist; sourceTree = "<group>"; };
 		2DB466041C0C214200E2CCAF /* RefreshControlTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshControlTool.h; sourceTree = "<group>"; };
 		2DB466051C0C214200E2CCAF /* RefreshControlTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshControlTool.m; sourceTree = "<group>"; };
@@ -132,6 +146,9 @@
 				2D594CF91C269494006946CC /* ResourceDetailViewController.m */,
 				2D594CFB1C269C84006946CC /* CustomNavigationController.h */,
 				2D594CFC1C269C84006946CC /* CustomNavigationController.m */,
+				2D69264C1C2E854100BA3508 /* QRCodeViewController.h */,
+				2D69264D1C2E854100BA3508 /* QRCodeViewController.m */,
+				2D69264E1C2E854100BA3508 /* QRCodeViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -146,6 +163,12 @@
 				2DB466051C0C214200E2CCAF /* RefreshControlTool.m */,
 				2D594CFE1C26C648006946CC /* SmartLoadMore.h */,
 				2D594CFF1C26C648006946CC /* SmartLoadMore.m */,
+				2D6926401C2E5D3A00BA3508 /* BlueAlertView.h */,
+				2D6926411C2E5D3A00BA3508 /* BlueAlertView.m */,
+				2D6926461C2E76FF00BA3508 /* QRCodeShareActivity.h */,
+				2D6926471C2E76FF00BA3508 /* QRCodeShareActivity.m */,
+				2D6926491C2E84E400BA3508 /* NSString+QRCodeImage.h */,
+				2D69264A1C2E84E400BA3508 /* NSString+QRCodeImage.m */,
 			);
 			name = ToolKits;
 			sourceTree = "<group>";
@@ -267,6 +290,7 @@
 				2D6313B41C017E4B0049942E /* Assets.xcassets in Resources */,
 				2D6313BF1C017FDD0049942E /* LaunchScreen.xib in Resources */,
 				2D6313B21C017E4B0049942E /* Main.storyboard in Resources */,
+				2D6926501C2E854100BA3508 /* QRCodeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,14 +354,18 @@
 				2D594CFA1C269494006946CC /* ResourceDetailViewController.m in Sources */,
 				2D5E8EBB1C0AED1900BD6E82 /* NetworkTools.m in Sources */,
 				2D5E8EB51C082DCC00BD6E82 /* InsideWebViewController.m in Sources */,
+				2D6926421C2E5D3A00BA3508 /* BlueAlertView.m in Sources */,
 				2D594CF11C2642BF006946CC /* RssNewsTableViewCell.m in Sources */,
 				2D1837AB1C0195C8007627F0 /* CustomTabbar.m in Sources */,
 				2D55258B1C186C0D00BF186F /* RSSItem.m in Sources */,
 				2D6313AC1C017E4B0049942E /* AppDelegate.m in Sources */,
 				2D594CF41C267749006946CC /* ResourcesViewController.m in Sources */,
+				2D69264F1C2E854100BA3508 /* QRCodeViewController.m in Sources */,
 				2D6313A91C017E4B0049942E /* main.m in Sources */,
 				2D55258F1C186C8100BF186F /* NewsViewController.m in Sources */,
 				2D55258C1C186C0D00BF186F /* RSSParser.m in Sources */,
+				2D6926481C2E76FF00BA3508 /* QRCodeShareActivity.m in Sources */,
+				2D69264B1C2E84E400BA3508 /* NSString+QRCodeImage.m in Sources */,
 				2DB466061C0C214200E2CCAF /* RefreshControlTool.m in Sources */,
 				2D594D001C26C648006946CC /* SmartLoadMore.m in Sources */,
 			);

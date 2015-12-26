@@ -11,6 +11,7 @@
 @interface SmartLoadMore ()
 {
     BOOL _isLoadling;
+    BOOL _noMoreData;
 }
 
 @property (nonatomic, copy) void (^loadBlock)(void);
@@ -37,14 +38,13 @@ static void * SmartLoadMoreFootViewContext;
 
 - (void)finishLoadAndNoMoreData:(BOOL)noMoreData {
     [self.tableView reloadData];
-    if (!noMoreData) {
-        _isLoadling = NO;
-    }
+    _isLoadling = NO;
+    _noMoreData = noMoreData;
 }
 
 - (void)startLoad {
     if (_isLoadling) {
-        NSLog(@"already loading");
+        NSLog(@"Already loading");
         return;
     }
     _isLoadling = YES;
@@ -67,6 +67,10 @@ static void * SmartLoadMoreFootViewContext;
             // tableview显示内容将尽时，加载更多
             if (tableViewHeight + tableViewHeight + contentOffsetY >= contentHeight) {
                 @synchronized(self) {
+                    if (_noMoreData) {
+                        NSLog(@"No more data");
+                        return;
+                    }
                     [self startLoad];
                     NSLog(@"SmartLoadMore");
                 }

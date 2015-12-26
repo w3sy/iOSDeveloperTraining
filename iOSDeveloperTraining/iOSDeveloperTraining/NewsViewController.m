@@ -21,6 +21,8 @@
 @property (nonatomic) NSMutableArray * news;
 @property (nonatomic) SmartLoadMore * loadMore;
 @property (nonatomic) CBStoreHouseRefreshControl *refreshControl;
+@property (weak, nonatomic) IBOutlet UILabel *loadMoreLabel;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadMoreIndicatorView;
 
 @end
 
@@ -32,10 +34,23 @@
     self.news = [NSMutableArray array];
     
     self.loadMore = [SmartLoadMore loadMoreForTableView:self.tableView loadWith:^{
-        [self loadNewsWithOffset:self.news.count];
+        [self loadNewsWithOffset:self.news.count refresh:NO];
     }];
     
     self.refreshControl = [RefreshControlTool attachToScrollView:self.tableView target:self refreshAction:@selector(refreshAction:)];
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:AFNetworkingReachabilityDidChangeNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
+        AFNetworkReachabilityStatus status = (AFNetworkReachabilityStatus)note.userInfo[AFNetworkingReachabilityNotificationStatusItem];
+        if (status == AFNetworkReachabilityStatusNotReachable) {
+            [self.loadMoreIndicatorView stopAnimating];
+            self.loadMoreLabel.text = @"目前没有网络";
+            [self.loadMore finishLoadAndNoMoreData:YES];
+        } else {
+            [self.loadMoreIndicatorView startAnimating];
+            self.loadMoreLabel.text = @"正在加载";
+            [self.loadMore startLoad];
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -47,11 +62,11 @@
     return UIStatusBarStyleLightContent;
 }
 
-- (void)loadNewsWithOffset:(NSInteger)offset {
+- (void)loadNewsWithOffset:(NSInteger)offset refresh:(BOOL)refresh {
     
-    NSDictionary * paras = @{@"word":@"iOS", @"tn":@"newsrss", @"sr":@0, @"cl":@2, @"rn":@20, @"ct":@0, @"pn":@(offset)};
+    NSDictionary * paras = @{@"word":@"iOS开发", @"tn":@"newsrss", @"sr":@0, @"cl":@2, @"rn":@20, @"ct":@0, @"pn":@(offset)};
     NSMutableURLRequest * req = [[NetworkTools sharedHTTPRequestSerializer] requestWithMethod:@"GET" URLString:@"http://news.baidu.com/ns" parameters:paras error:nil];
-    if (!offset) {
+    if (refresh) {
         req.cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
     }
     [RSSParser parseRSSFeedForRequest:req success:^(NSArray *feedItems) {
@@ -61,14 +76,27 @@
         [self.news addObjectsFromArray:feedItems];
         BOOL noMoreData = feedItems.count == 0 ? YES:NO;
         [self.loadMore finishLoadAndNoMoreData:noMoreData];
+        if (noMoreData) {
+            [self.loadMoreIndicatorView stopAnimating];
+            self.loadMoreLabel.text = @"没有更多了";
+        }
         [self.refreshControl finishingLoading];
     } failure:^(NSError *error) {
         NSLog(@"%@", error);
+        // 当没有网络时
+        if (error.code == -1009) {
+            [NetworkTools sharedHTTPRequestSerializer].cachePolicy = NSURLRequestReturnCacheDataDontLoad;
+            [self loadNewsWithOffset:offset refresh:NO];
+        } else {
+            [self.loadMoreIndicatorView stopAnimating];
+            self.loadMoreLabel.text = @"目前没有网络";
+            [self.loadMore finishLoadAndNoMoreData:YES];
+        }
     }];
 }
 
 - (void)refreshAction:(id)sender {
-    [self loadNewsWithOffset:0];
+    [self loadNewsWithOffset:0 refresh:YES];
 }
 
 /*

@@ -62,14 +62,22 @@
                                     <rect key="frame" x="0.0" y="128" width="600" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="正在加载" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r9P-b5-nPt">
+                                            <rect key="frame" x="270" y="13.5" width="60" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="3O8-Ds-NhG">
-                                            <rect key="frame" x="290" y="12" width="20" height="20"/>
+                                            <rect key="frame" x="242" y="12" width="20" height="20"/>
                                         </activityIndicatorView>
                                     </subviews>
                                     <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
-                                        <constraint firstItem="3O8-Ds-NhG" firstAttribute="centerX" secondItem="7al-tn-0OQ" secondAttribute="centerX" id="d1j-0A-KvE"/>
+                                        <constraint firstItem="r9P-b5-nPt" firstAttribute="leading" secondItem="3O8-Ds-NhG" secondAttribute="trailing" constant="8" id="0TH-RB-2qs"/>
+                                        <constraint firstItem="r9P-b5-nPt" firstAttribute="centerY" secondItem="7al-tn-0OQ" secondAttribute="centerY" id="GSe-wU-oJV"/>
                                         <constraint firstItem="3O8-Ds-NhG" firstAttribute="centerY" secondItem="7al-tn-0OQ" secondAttribute="centerY" id="eK5-gZ-qji"/>
+                                        <constraint firstItem="r9P-b5-nPt" firstAttribute="centerX" secondItem="7al-tn-0OQ" secondAttribute="centerX" id="hHl-7M-R9l"/>
                                     </constraints>
                                 </view>
                                 <prototypes>
@@ -164,6 +172,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="资讯" id="OW5-gl-dGF"/>
                     <connections>
+                        <outlet property="loadMoreIndicatorView" destination="3O8-Ds-NhG" id="zBw-1m-mHO"/>
+                        <outlet property="loadMoreLabel" destination="r9P-b5-nPt" id="wzX-RE-j5Q"/>
                         <outlet property="tableView" destination="lyJ-v6-bse" id="ylE-mp-7or"/>
                     </connections>
                 </viewController>
@@ -361,7 +371,7 @@
                                             <constraint firstAttribute="height" constant="21" id="nip-kG-V4q"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KGz-JD-efG">

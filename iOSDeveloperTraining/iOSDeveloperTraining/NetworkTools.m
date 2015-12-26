@@ -7,6 +7,7 @@
 //
 
 #import "NetworkTools.h"
+#import "BlueAlertView.h"
 
 @implementation NetworkTools
 
@@ -38,14 +39,15 @@
         switch (status) {
             case AFNetworkReachabilityStatusNotReachable:
                 [NetworkTools sharedHTTPRequestSerializer].cachePolicy = NSURLRequestReturnCacheDataDontLoad;
-                NSLog(@"无网络");
+                [BlueAlertView showAlertViewWithMessage:@"当前无网络" onView:nil];
                 break;
             case AFNetworkReachabilityStatusReachableViaWiFi:
                 [NetworkTools sharedHTTPRequestSerializer].cachePolicy = NSURLRequestUseProtocolCachePolicy;
-                NSLog(@"WiFi");
+                [BlueAlertView showAlertViewWithMessage:@"正在使用WiFi网络" onView:nil];
                 break;
-            case AFNetworkReachabilityStatusUnknown:
             case AFNetworkReachabilityStatusReachableViaWWAN:
+                [BlueAlertView showAlertViewWithMessage:@"正在蜂窝数据网络" onView:nil];
+            case AFNetworkReachabilityStatusUnknown:
             default:
                 [NetworkTools sharedHTTPRequestSerializer].cachePolicy = NSURLRequestReturnCacheDataElseLoad;
                 break;
