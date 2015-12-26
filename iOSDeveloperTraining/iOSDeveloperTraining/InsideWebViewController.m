@@ -10,11 +10,13 @@
 #import "NetworkTools.h"
 #import "QRCodeShareActivity.h"
 #import <WebKit/WebKit.h>
+#import <iAd/iAd.h>
 
-@interface InsideWebViewController ()
+@interface InsideWebViewController () <ADBannerViewDelegate>
 
 @property (nonatomic) NSString * urlStr;
 @property (nonatomic) WKWebView * webView; //浏览器
+@property (nonatomic) ADBannerView * bannerView; //iAD广告栏
 @property (weak, nonatomic) IBOutlet UIView *webViewContainerView; //浏览器容器
 @property (weak, nonatomic) IBOutlet UIProgressView *loadProgressView; //加载进度条
 @property (weak, nonatomic) IBOutlet UILabel *webOriginLabel; //页面地址指示条
@@ -67,6 +69,8 @@ static BOOL webViewKVO;
     // 创建加载请求
     NSMutableURLRequest * req = [NetworkTools requestGETWithUrlString:self.urlStr];
     [self.webView loadRequest:req];
+    
+    [self iADSetup];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -185,6 +189,36 @@ static BOOL webViewKVO;
     NSArray *applicationActivities = @[qrActivity];
     UIActivityViewController * avc = [[UIActivityViewController alloc] initWithActivityItems:@[url] applicationActivities:applicationActivities];
     [self presentViewController:avc animated:YES completion:nil];
+}
+
+- (void)iADSetup {
+    if ([ADBannerView instancesRespondToSelector:@selector(initWithAdType:)]) {
+        _bannerView = [[ADBannerView alloc] initWithAdType:ADAdTypeBanner];
+    }
+    else {
+        _bannerView = [[ADBannerView alloc] init];
+    }
+    self.bannerView.delegate = self;
+    self.bannerView.alpha = 0;
+    [self.webViewContainerView addSubview:self.bannerView];
+    self.bannerView.translatesAutoresizingMaskIntoConstraints = NO;
+    NSLayoutConstraint * xConstraint = [NSLayoutConstraint constraintWithItem:self.bannerView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.webViewContainerView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
+    NSLayoutConstraint * bottomConstraint = [NSLayoutConstraint constraintWithItem:self.bannerView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.webViewContainerView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0];
+    [self.webViewContainerView addConstraints:@[xConstraint, bottomConstraint]];
+    
+}
+
+- (void)bannerViewDidLoadAd:(ADBannerView *)banner {
+    [UIView animateWithDuration:0.5 animations:^{
+        self.bannerView.alpha = 1.0;
+    }];
+}
+
+- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error {
+    NSLog(@"iAD:%@", error);
+    [UIView animateWithDuration:0.5 animations:^{
+        self.bannerView.alpha = 0.0;
+    }];
 }
 
 @end
