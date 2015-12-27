@@ -185,6 +185,9 @@ static BOOL webViewKVO;
 - (IBAction)shareAction:(id)sender {
     
     NSURL * url = self.webView.URL;
+    if (!url) {
+        return;
+    }
     QRCodeShareActivity * qrActivity = [[QRCodeShareActivity alloc] init];
     NSArray *applicationActivities = @[qrActivity];
     UIActivityViewController * avc = [[UIActivityViewController alloc] initWithActivityItems:@[url] applicationActivities:applicationActivities];
