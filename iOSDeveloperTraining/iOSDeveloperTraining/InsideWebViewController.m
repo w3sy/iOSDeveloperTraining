@@ -203,11 +203,11 @@ static BOOL webViewKVO;
     }
     self.bannerView.delegate = self;
     self.bannerView.alpha = 0;
-    [self.webViewContainerView addSubview:self.bannerView];
+    [self.view addSubview:self.bannerView];
     self.bannerView.translatesAutoresizingMaskIntoConstraints = NO;
-    NSLayoutConstraint * xConstraint = [NSLayoutConstraint constraintWithItem:self.bannerView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.webViewContainerView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
-    NSLayoutConstraint * bottomConstraint = [NSLayoutConstraint constraintWithItem:self.bannerView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.webViewContainerView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0];
-    [self.webViewContainerView addConstraints:@[xConstraint, bottomConstraint]];
+    NSLayoutConstraint * xConstraint = [NSLayoutConstraint constraintWithItem:self.bannerView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
+    NSLayoutConstraint * bottomConstraint = [NSLayoutConstraint constraintWithItem:self.bannerView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.bottomLayoutGuide attribute:NSLayoutAttributeTop multiplier:1.0 constant:0];
+    [self.view addConstraints:@[xConstraint, bottomConstraint]];
     
 }
 
