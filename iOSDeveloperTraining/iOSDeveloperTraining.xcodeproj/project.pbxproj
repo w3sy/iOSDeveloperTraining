@@ -33,6 +33,7 @@
 		2D69265F1C2EA08300BA3508 /* Localization.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D6926611C2EA08300BA3508 /* Localization.strings */; };
 		2D6926641C2EA3C800BA3508 /* QRCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D6926661C2EA3C800BA3508 /* QRCodeViewController.xib */; };
 		2D69268F1C33B99400BA3508 /* PassTimeCounter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D69268E1C33B99400BA3508 /* PassTimeCounter.m */; };
+		2D6926951C340B9B00BA3508 /* SearchBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D6926941C340B9B00BA3508 /* SearchBarButtonItem.m */; };
 		2DB466031C0C1E9000E2CCAF /* loading.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2DB466021C0C1E9000E2CCAF /* loading.plist */; };
 		2DB466061C0C214200E2CCAF /* RefreshControlTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB466051C0C214200E2CCAF /* RefreshControlTool.m */; };
 		486733C3A624421538E4AB34 /* Pods_iOSDeveloperTraining.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38326F6F2CE0F8D035A484CB /* Pods_iOSDeveloperTraining.framework */; };
@@ -91,6 +92,8 @@
 		2D6926691C2EA40900BA3508 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localization.strings; sourceTree = "<group>"; };
 		2D69268D1C33B99400BA3508 /* PassTimeCounter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassTimeCounter.h; sourceTree = "<group>"; };
 		2D69268E1C33B99400BA3508 /* PassTimeCounter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassTimeCounter.m; sourceTree = "<group>"; };
+		2D6926931C340B9B00BA3508 /* SearchBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchBarButtonItem.h; sourceTree = "<group>"; };
+		2D6926941C340B9B00BA3508 /* SearchBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchBarButtonItem.m; sourceTree = "<group>"; };
 		2DB466021C0C1E9000E2CCAF /* loading.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = loading.plist; sourceTree = "<group>"; };
 		2DB466041C0C214200E2CCAF /* RefreshControlTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshControlTool.h; sourceTree = "<group>"; };
 		2DB466051C0C214200E2CCAF /* RefreshControlTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshControlTool.m; sourceTree = "<group>"; };
@@ -130,6 +133,8 @@
 				2D594CF01C2642BF006946CC /* RssNewsTableViewCell.m */,
 				2D594CF51C2680BF006946CC /* ResourcesTableViewCell.h */,
 				2D594CF61C2680BF006946CC /* ResourcesTableViewCell.m */,
+				2D6926931C340B9B00BA3508 /* SearchBarButtonItem.h */,
+				2D6926941C340B9B00BA3508 /* SearchBarButtonItem.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -377,6 +382,7 @@
 				2D1837AB1C0195C8007627F0 /* CustomTabbar.m in Sources */,
 				2D55258B1C186C0D00BF186F /* RSSItem.m in Sources */,
 				2D6313AC1C017E4B0049942E /* AppDelegate.m in Sources */,
+				2D6926951C340B9B00BA3508 /* SearchBarButtonItem.m in Sources */,
 				2D594CF41C267749006946CC /* ResourcesViewController.m in Sources */,
 				2D69264F1C2E854100BA3508 /* QRCodeViewController.m in Sources */,
 				2D6313A91C017E4B0049942E /* main.m in Sources */,

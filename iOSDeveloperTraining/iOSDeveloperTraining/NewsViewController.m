@@ -15,6 +15,7 @@
 #import "RefreshControlTool.h"
 #import "UIImageView+AFNetworking.h"
 #import "PassTimeCounter.h"
+#import "SearchBarButtonItem.h"
 
 @interface NewsViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -24,6 +25,7 @@
 @property (nonatomic) CBStoreHouseRefreshControl *refreshControl;
 @property (weak, nonatomic) IBOutlet UILabel *loadMoreLabel;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadMoreIndicatorView;
+@property (nonatomic) NSString * searchKeyword;
 
 @end
 
@@ -53,6 +55,17 @@
         }
     }];
     
+    SearchBarButtonItem * item = [[SearchBarButtonItem alloc] init];
+    self.navigationItem.rightBarButtonItem = item;
+    [item setSearchActionBlock:^(NSString *keyword) {
+        self.searchKeyword = keyword;
+        [self loadNewsWithOffset:0 refresh:YES];
+    }];
+    [item setCancelActionBlock:^{
+        self.searchKeyword = nil;
+        [self loadNewsWithOffset:0 refresh:YES];
+    }];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -65,8 +78,11 @@
 }
 
 - (void)loadNewsWithOffset:(NSInteger)offset refresh:(BOOL)refresh {
-    
-    NSDictionary * paras = @{@"word":@"iOS", @"tn":@"newsrss", @"sr":@0, @"cl":@2, @"rn":@20, @"ct":@0, @"pn":@(offset)};
+    NSString * searchKeyword = @"iOS";
+    if (self.searchKeyword.length > 0) {
+        searchKeyword = self.searchKeyword;
+    }
+    NSDictionary * paras = @{@"word":searchKeyword, @"tn":@"newsrss", @"sr":@0, @"cl":@2, @"rn":@20, @"ct":@0, @"pn":@(offset)};
     NSMutableURLRequest * req = [[NetworkTools sharedHTTPRequestSerializer] requestWithMethod:@"GET" URLString:@"http://news.baidu.com/ns" parameters:paras error:nil];
     if (refresh) {
         req.cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
