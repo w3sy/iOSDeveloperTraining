@@ -29,5 +29,7 @@
 -(NSArray *)imagesFromItemDescription;
 -(NSArray *)imagesFromContent;
 
+@property (nonatomic) NSString * simpleDescription;
+@property (nonatomic) NSString * imageUrlString;
 
 @end

@@ -114,14 +114,27 @@
     _itemDescription = itemDescription;
     
     NSData * data = [itemDescription dataUsingEncoding:NSUnicodeStringEncoding];
-    NSAttributedString * attrStr = nil;
+    NSMutableAttributedString * attrStr = nil;
     @try {
-        attrStr = [[NSAttributedString alloc] initWithData:data options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType} documentAttributes:nil error:nil];
+        attrStr = [[NSMutableAttributedString alloc] initWithData:data options:@{NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType} documentAttributes:nil error:nil];
+        NSMutableString * description = [NSMutableString stringWithString:attrStr.string];
+        [description replaceOccurrencesOfString:@"\U0000fffc\n" withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, description.length)];
+        _simpleDescription = description;
     }
     @catch (NSException *exception) {
         NSLog(@"%@", exception);
     }
     self.attrDescription = attrStr;
+    NSArray * imgArr = [self imagesFromItemDescription];
+    if (imgArr.count > 0) {
+        NSMutableString * urlStr = [NSMutableString stringWithString:imgArr[0]];
+        [urlStr replaceOccurrencesOfString:@"&amp;" withString:@"&" options:NSCaseInsensitiveSearch range:NSMakeRange(0, urlStr.length)];
+        self.imageUrlString = urlStr;
+    }
+}
+
+- (void)setTitle:(NSString *)title {
+    _title = [title stringByTrimmingCharactersInSet:[NSCharacterSet controlCharacterSet]];
 }
 
 @end

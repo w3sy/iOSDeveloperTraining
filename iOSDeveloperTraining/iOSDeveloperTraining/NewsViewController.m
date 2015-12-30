@@ -13,9 +13,10 @@
 #import "NetworkTools.h"
 #import "SmartLoadMore.h"
 #import "RefreshControlTool.h"
+#import "UIImageView+AFNetworking.h"
+#import "PassTimeCounter.h"
 
 @interface NewsViewController () <UITableViewDataSource, UITableViewDelegate>
-
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) NSMutableArray * news;
@@ -51,6 +52,7 @@
             [self.loadMore startLoad];
         }
     }];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -138,14 +140,19 @@
     
     RSSItem * item = self.news[indexPath.row];
     
-    cell.numberLabel.text = [NSString stringWithFormat:@"%ld", (long)indexPath.row + 1];
-    [cell.numberLabel needsUpdateConstraints];
     cell.titleLabel.text = item.title;
-    cell.newsDescription.attributedText = item.attrDescription;
+    cell.newsDescription.text = item.simpleDescription;
     cell.sourceLabel.text = item.author;
-    NSDateFormatter * df = [[NSDateFormatter alloc] init];
-    df.dateFormat = @"yyyy-MM-dd hh:mm:ss";
-    cell.pubDateLabel.text = [df stringFromDate:item.pubDate];
+    if (item.imageUrlString) {
+        cell.imgWidthLayoutConstraint.constant = 121;
+        cell.descriptionLeadingLayoutConstraint.constant = 8;
+        [cell.imgView setImageWithURL:[NSURL URLWithString:item.imageUrlString] placeholderImage:[UIImage new]];
+    } else {
+        cell.imgView.image = nil;
+        cell.imgWidthLayoutConstraint.constant = 0;
+        cell.descriptionLeadingLayoutConstraint.constant = 0;
+    }
+    cell.pubDateLabel.text = [PassTimeCounter passedTimeSince:item.pubDate];
     
     return cell;
 }

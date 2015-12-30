@@ -13,10 +13,12 @@
  */
 @interface RssNewsTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *numberLabel;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *newsDescription;
 @property (weak, nonatomic) IBOutlet UILabel *sourceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *pubDateLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *imgWidthLayoutConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *descriptionLeadingLayoutConstraint;
+@property (weak, nonatomic) IBOutlet UIImageView *imgView;
 
 @end
