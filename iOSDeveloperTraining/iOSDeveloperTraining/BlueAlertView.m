@@ -45,16 +45,43 @@
     [self removeFromSuperview];
 }
 
++ (UINavigationBar *)visibleNavigationBarInView:(UIView *)view {
+    if ([view isKindOfClass:[UINavigationBar class]]) {
+        if (view.hidden == NO) {
+            return (UINavigationBar *)view;
+        } else {
+            return nil;
+        }
+    } else if (view.subviews.count > 0) {
+        for (UIView * sub in view.subviews) {
+            UINavigationBar * bar = [self visibleNavigationBarInView:sub];
+            if (bar) {
+                return bar;
+            }
+        }
+    }
+    return nil;
+}
+
 + (void)showAlertViewWithMessage:(NSString *)message onView:(UIView *)view {
     CGFloat width = view.frame.size.width;
     if (!width) {
         width = [UIScreen mainScreen].bounds.size.width;
     }
-    BlueAlertView * blueAlertView = [[BlueAlertView alloc] initWithFrame:CGRectMake(0, 20, width, 35)];
-    blueAlertView.messageLabel.text = message;
+    CGFloat offsetY = 0;
     if (!view) {
         view = [[UIApplication sharedApplication] keyWindow];
+        UINavigationBar * bar = [self visibleNavigationBarInView:view];
+        if (bar) {
+            offsetY += bar.frame.origin.y + bar.frame.size.height;
+        } else {
+            if (![UIApplication sharedApplication].statusBarHidden) {
+                offsetY += [UIApplication sharedApplication].statusBarFrame.origin.y + [UIApplication sharedApplication].statusBarFrame.size.height;
+            }
+        }
     }
+    BlueAlertView * blueAlertView = [[BlueAlertView alloc] initWithFrame:CGRectMake(0, offsetY, width, 35)];
+    blueAlertView.messageLabel.text = message;
     blueAlertView.alpha = 0;
     [view addSubview:blueAlertView];
     [UIView animateWithDuration:0.5 animations:^{

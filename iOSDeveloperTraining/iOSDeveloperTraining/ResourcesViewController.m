@@ -34,7 +34,7 @@
 }
 
 - (void)loadDataWithPage:(NSInteger)page {
-    [_manager GET:@"https://swkits.com/develop/wp-json/posts" parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+    [_manager GET:@"http://swkits.com/develop/wp-json/posts" parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
         [_dataArray addObjectsFromArray:responseObject];
         [self.tableView reloadData];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
