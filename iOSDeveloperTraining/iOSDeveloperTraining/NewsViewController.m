@@ -190,6 +190,7 @@
     
     InsideWebViewController * ivc = [self.storyboard instantiateViewControllerWithIdentifier:@"InsideWebVC"];
     [ivc loadWithUrlString:item.link.absoluteString];
+    ivc.item = item;
     
     [self.navigationController pushViewController:ivc animated:YES];
 }

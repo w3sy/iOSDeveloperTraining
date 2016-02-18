@@ -9,8 +9,10 @@
 #import "InsideWebViewController.h"
 #import "NetworkTools.h"
 #import "QRCodeShareActivity.h"
+#import "WeChatShareActivity.h"
 #import <WebKit/WebKit.h>
 #import <iAd/iAd.h>
+#import "WXApi.h"
 
 @interface InsideWebViewController () <ADBannerViewDelegate>
 
@@ -189,8 +191,19 @@ static BOOL webViewKVO;
         return;
     }
     QRCodeShareActivity * qrActivity = [[QRCodeShareActivity alloc] init];
-    NSArray *applicationActivities = @[qrActivity];
-    UIActivityViewController * avc = [[UIActivityViewController alloc] initWithActivityItems:@[url] applicationActivities:applicationActivities];
+    NSMutableArray *applicationActivities = [NSMutableArray array];
+    [applicationActivities addObject:qrActivity];
+    
+    if ([WXApi isWXAppInstalled]) {
+        
+        for (NSInteger i = 0; i < 3; i++) {
+            WeChatShareActivity * wxActivity = [[WeChatShareActivity alloc] init];
+            wxActivity.scene = (enum WXScene)i;
+            [applicationActivities addObject:wxActivity];
+        }
+    }
+    
+    UIActivityViewController * avc = [[UIActivityViewController alloc] initWithActivityItems:@[url, self.item] applicationActivities:applicationActivities];
     [self presentViewController:avc animated:YES completion:nil];
 }
 

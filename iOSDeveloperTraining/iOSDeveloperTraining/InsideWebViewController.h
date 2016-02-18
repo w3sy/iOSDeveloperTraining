@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RSSItem.h"
 
 /**
  *  应用内浏览器界面控制器
  */
 @interface InsideWebViewController : UIViewController
+
+@property (nonatomic) RSSItem * item;
 
 /**
  *  设置加载页面地址

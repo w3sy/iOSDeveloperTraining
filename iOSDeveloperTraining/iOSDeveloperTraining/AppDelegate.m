@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "NetworkTools.h"
+#import "WXApi.h"
 
 @interface AppDelegate ()
 
@@ -22,6 +23,8 @@
     //NSLog(@"%@", NSHomeDirectory());
     // 开启网络状态监测
     [NetworkTools startReachabilityMonitoringWithDefaultBlock];
+    
+    [WXApi registerApp:@"wx01094a05ec5ff3a7"];
     
     return YES;
 }
