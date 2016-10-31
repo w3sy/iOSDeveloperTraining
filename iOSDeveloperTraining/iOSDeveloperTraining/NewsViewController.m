@@ -78,7 +78,7 @@
 }
 
 - (void)loadNewsWithOffset:(NSInteger)offset refresh:(BOOL)refresh {
-    NSString * searchKeyword = @"iOS";
+    NSString * searchKeyword = @"iOS开发";
     if (self.searchKeyword.length > 0) {
         searchKeyword = self.searchKeyword;
     }
