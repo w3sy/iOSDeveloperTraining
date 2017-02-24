@@ -23,7 +23,6 @@
 
 static void * SmartLoadMoreFootViewContext;
 
-
 + (instancetype)loadMoreForTableView:(UITableView *)tableView loadWith:(void (^)())loadBlock {
     return [[self alloc] initForTableView:tableView loadWith:loadBlock];
 }
